@@ -12,10 +12,16 @@ const { createApp } = Vue;
 createApp ({
     data() {
         return {
-            message: 'Template HTML CSS Vue',
+            url: 'https://flynn.boolean.careers/exercises/api/random/mail',
+            emails: [],
         };
     },
     mounted() {
-        console.log(axios);
+        axios.get(this.url)
+            .then((res) => {
+                console.log('Email generata', res.data.response);
+                this.emails.push(res.data.response);
+            });
+        console.log(this.emails);
     },
 }).mount('#app');
