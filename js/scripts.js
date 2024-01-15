@@ -16,12 +16,16 @@ createApp ({
             emails: [],
         };
     },
+     
     mounted() {
-        axios.get(this.url)
+        for (let i = 0; i < 10; i++) {
+            axios.get(this.url)
             .then((res) => {
                 console.log('Email generata', res.data.response);
                 this.emails.push(res.data.response);
             });
+        }
+        
         console.log(this.emails);
     },
 }).mount('#app');
